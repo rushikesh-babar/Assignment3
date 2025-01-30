@@ -1,5 +1,7 @@
 package com.assignment3.school.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -17,4 +19,16 @@ public class ContactDao {
 	return jdbcTemplate.update(sql,contact.getName(),contact.getMobile(),contact.getMessage());
 	}
 	
+	
+	public List<Contact>getMessages(){
+		String sql="select * from contact";
+		
+		return jdbcTemplate.query(sql, (rs,rowNum)->new Contact(
+				rs.getInt("id"),
+				rs.getString("name"),
+				rs.getString("mobile"),
+				rs.getString("message")
+
+				));
+	}
 }

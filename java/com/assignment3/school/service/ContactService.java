@@ -1,5 +1,7 @@
 package com.assignment3.school.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,5 +17,10 @@ public class ContactService {
     	
     	return contactDao.saveContact(contact);
     }
+	
+    public List<Contact> getMessages(){
+    	return contactDao.getMessages();
+    }
+
 	
 }
